@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sudoku</title>
+
+	<meta charset="utf-8"/>
+	<meta name="description" content="Sudoku : html5, css & javascript"/>
+	<meta name="author" content="d.prock creative"/>
+
+	<meta name="HandheldFriendly" content="True"/>
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<!--link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
+	<link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
+	<link rel="shortcut icon" href="img/l/apple-touch-icon.png"-->
+
+
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+	<!-- link rel="apple-touch-startup-image" href="img/l/splash.png"/ -->
+
+	<meta http-equiv="cleartype" content="on"/>
+
+	<link rel="stylesheet" href="/assets/css/base.css" type="text/css"/>
+	<script type="text/javascript" src="/assets/js/LAB.min.js"></script>
+	<script type="text/javascript">
+	$LAB
+		.script("/assets/js/jquery.min.js")
+		.script("/assets/js/jquery.tmpl.pack.js")
+		.script("/assets/js/jquery.tmpload.min.js")
+		.script("/assets/js/jquery.cookie.pack.js")
+		.script("/assets/js/jquery.easing.pack.js")
+		.script("/assets/js/jquery.sudoku.js").wait(function(){
+			Sudoku.init();
+		});
+		/*
+		<div id="test"></div><a href="javascript:void(0);" onclick="test('Back atcha');">test</a>
+		*/
+	</script>
+</head>
+<body>
+
+<div id="sContainer"></div>
+</body>
+</html>
