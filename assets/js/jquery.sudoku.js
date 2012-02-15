@@ -1,7 +1,7 @@
 var $S = {
     data:null,points:250,pass:0,range:[1,2,3,4,5,6,7,8,9],keys:{49:1,50:2,51:3,52:4,53:5,54:6,55:7,56:8,57:9},dirs:{37:'left',38:'up',39:'right',40:'down'},
     init:function(){
-		$S.temp.load.init();
+        $S.temp.load.init();
         if(!this.recover()){
             $S.grid.H.set();
             $S.grid.V.set();
@@ -29,11 +29,11 @@ var $S = {
         T:{t:'sudoku',c:'cell',m:'modal'},
         S:{container:'#sContainer',modal:{m:'#sMC',span:'#sMC > span'},table:{t:'#sTable',tr:'tbody > tr',td:'td'},item:'.item p',input:'.cell p',closed:'.closed p',target:'p.target',picker:'button.picker',reset:'button.reset',labels:'thead > tr > th > ul li'},
         load:{
-        	init:function(){
+            init:function(){
                 $.tmpload($S.temp.T.t, '/assets/templates/sudoku.tmpl');
                 $.tmpload($S.temp.T.c, '/assets/templates/cell.tmpl');
                 $.tmpload($S.temp.T.m, '/assets/templates/modal.tmpl');
-        	},
+            },
             main:function(obj,cb){
                 $.when($.tmpload($S.temp.T.t),obj).then(function(tmpl,data){
                     $.tmpl(tmpl,data).appendTo($S.temp.S.container);
@@ -64,8 +64,8 @@ var $S = {
             },
             modal:function(s){
                 $.when($.tmpload($S.temp.T.m),{content:s}).then(function(tmpl,data){
-					$($S.temp.S.modal.span,$S.temp.S.container).text(s);
-					$S.effects.bubble($S.temp.S.modal.m);
+                    $($S.temp.S.modal.span,$S.temp.S.container).text(s);
+                    $S.effects.bubble($S.temp.S.modal.m);
                 });
                 return this;
             }
@@ -117,14 +117,14 @@ var $S = {
             return this;
         },
         fulfill:function(){
-        	/*	TODO 
-        		check number of completed elements and disable pickers if fulfilled
-        	 */
-        	//$S.temp.update.modal("hello");
-        	var m = $.extend(true,$S.grid.m,$S.grid.a);
-        	
-        	//console.dir(m);
-        	return this;
+            /*    TODO 
+                check number of completed elements and disable pickers if fulfilled
+             */
+            //$S.temp.update.modal("hello");
+            var m = $.extend(true,$S.grid.m,$S.grid.a);
+            
+            //console.dir(m);
+            return this;
         },
         isAnswer:function(x,y){return (null!==$S.grid.a && $.type($S.grid.a[x])!=='undefined'&&$.type($S.grid.a[x][y])!=='undefined');},
         setAnswer:function(obj,x,y,a){if(null===$S.grid.a){$S.grid.A.set();}$S.grid.a[x]=(null==$S.grid.a[x])?{}:$S.grid.a[x];$S.grid.a[x][y]=a;$S.grid.A.save();$S.temp.update.cell(obj,a,function(o){$S.effects.rotate(o).blaze(o,true)});return this;},
@@ -164,7 +164,7 @@ var $S = {
         }
     },
     effects:{
-    	bubble:function(obj){var t,_r=function(i){if(i<=3){$(obj).addClass('show');i++;$(obj).addClass('bubble-'+i).removeClass('bubble-'+(i-1));t=setTimeout(function(){_r(i);},250);}else{t=setTimeout(function(){$(obj).removeClass('show').removeClass('bubble-'+i);window.clearTimeout(t);},750);}};_r(0);return this;},
+        bubble:function(obj){var t,_r=function(i){if(i<=3){$(obj).addClass('show');i++;$(obj).addClass('bubble-'+i).removeClass('bubble-'+(i-1));t=setTimeout(function(){_r(i);},250);}else{t=setTimeout(function(){$(obj).removeClass('show').removeClass('bubble-'+i);window.clearTimeout(t);},750);}};_r(0);return this;},
         flame:function(obj,b){if(b){$(obj).parent('div').addClass('flame');}else{$(obj).parent('div').removeClass('flame');}},
         blaze:function(obj,b){if(b){$(obj).parent('div').addClass('blaze').removeClass('unblaze');$(obj).animate({opacity:1},500);}else{$(obj).parent('div').addClass('unblaze').removeClass('blaze');};return this;},
         rotate:function(obj){var t,_r=function(i){if(i<=1){i++;$(obj).addClass('rotate-'+i).removeClass('rotate-'+(i-1));t=setTimeout(function(){_r(i);},10);}else{t=setTimeout(function(){$(obj).removeClass('rotate').removeClass('rotate-'+i);window.clearTimeout(t);},100);}};_r(0);return this;}, 
