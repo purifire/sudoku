@@ -1,7 +1,7 @@
 /**
  *    Tooltip
- *	------------------
- *	@dependencies jquery, tempload, easing
+ *    ------------------
+ *    @dependencies jquery, tempload, easing
  */
 (function($){
     $.fn.tooltips = function(options) {
