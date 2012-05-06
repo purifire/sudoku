@@ -115,6 +115,8 @@ table#sTable tbody tr td.active div p {
 	color: rgba(255,255,255,0.9);
 }
 
+table#sTable tbody tr td.active div p::selection { background-color: none; }
+
 table#sTable tbody tr td div.blaze p {opacity:0;border-color:rgba(0,0,0,0.5);background-color:rgba(255,255,255,0.7);}
 table#sTable tbody tr td div.unblaze p {
     height: 25px;
