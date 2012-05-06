@@ -1,36 +1,36 @@
 <div id="sTableContainer">
-	<div id="sMetrics">
-		<ul>
-			<li><label>strike<span>${strike}</span></label></li><li><label>x<span>${multiplier}</span></label></li><li><label>score<span>${score}</span></label></li>
-		</ul>
-	</div>
-	<table id="sTable" cellpadding="0" cellspacing="0">
-		<tbody>
-		{{each(rowIndex,row) rows}}
-			<tr data-row="${rowIndex}">
-			{{each(columnIndex,cell) row}}
-				<td class="row-${rowIndex} column-${columnIndex}" data-column="${columnIndex}">
-					{{if Sudoku.puzzle.isAnswer(rowIndex,columnIndex)}}
-					<div class="closed item">
-						<p data-item="${Sudoku.puzzle.getAnswer(rowIndex,columnIndex)}">${Sudoku.puzzle.getAnswer(rowIndex,columnIndex)}</p>
-					</div>
-					{{else cell==""}}
-					<div class="cell">
-						<p data-row="${rowIndex}" data-column="${columnIndex}" tabindex="${rowIndex}${columnIndex}"></div>
-					</div>
-					{{else}}
-					<div class="item">
-						<p data-item="${cell}">${cell}</p>
-					</div>
-					{{/if}}
-				</td>
-			{{/each}}
-			</tr>
-		{{/each}}
-		</tbody>
-	</table>
-	<div id="sControls">
-		<ul>{{each(k,v) range}}<li><button type="button" class="picker" data-value="${v}">${v}</button></li>{{/each}}</ul>
-		<ul>{{each(k,v) dparams}}<li><button type="button" class="reset {{if k==difficulty}}highlight{{/if}}" data-difficulty="${k}">${v}</button></li>{{/each}}</ul>
-	</div>
+    <div id="sMetrics">
+        <ul>
+            <li><label>strike<span>${strike}</span></label></li><li><label>x<span>${multiplier}</span></label></li><li><label>score<span>${score}</span></label></li>
+        </ul>
+    </div>
+    <table id="sTable" cellpadding="0" cellspacing="0">
+        <tbody>
+        {{each(rowIndex,row) rows}}
+            <tr data-row="${rowIndex}">
+            {{each(columnIndex,cell) row}}
+                <td class="row-${rowIndex} column-${columnIndex}" data-column="${columnIndex}">
+                    {{if Sudoku.puzzle.isAnswer(rowIndex,columnIndex)}}
+                    <div class="closed item">
+                        <p data-item="${Sudoku.puzzle.getAnswer(rowIndex,columnIndex)}">${Sudoku.puzzle.getAnswer(rowIndex,columnIndex)}</p>
+                    </div>
+                    {{else cell==""}}
+                    <div class="cell">
+                        <p data-row="${rowIndex}" data-column="${columnIndex}" tabindex="${rowIndex}${columnIndex}"></div>
+                    </div>
+                    {{else}}
+                    <div class="item">
+                        <p data-item="${cell}">${cell}</p>
+                    </div>
+                    {{/if}}
+                </td>
+            {{/each}}
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <div id="sControls">
+        <ul>{{each(k,v) range}}<li><button type="button" class="picker" data-value="${v}">${v}</button></li>{{/each}}</ul>
+        <ul>{{each(k,v) dparams}}<li><button type="button" class="reset {{if k==difficulty}}highlight{{/if}}" data-difficulty="${k}">${v}</button></li>{{/each}}</ul>
+    </div>
 </div>

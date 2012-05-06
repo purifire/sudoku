@@ -5,10 +5,12 @@
  *  @author        d.prock
  *  @dependencies  jquery, tempload, easing
  */
+
 var Sudoku = {
     data:null, points:250, pass:0, range:[1,2,3,4,5,6,7,8,9], keys:{49:1,50:2,51:3,52:4,53:5,54:6,55:7,56:8,57:9}, cardinals:{37:'left',38:'up',39:'right',40:'down'},
     init: function() {
         Sudoku.temp.load.init();
+
         if (!this.recover()) {
             Sudoku.grid.H.set();
             Sudoku.grid.V.set();
@@ -161,10 +163,10 @@ var Sudoku = {
                 return Sudoku.grid.h;
             },
             save: function() {
-                Sudoku.cookie.set("sudokuPuzzleHGrid", this.get());
+                Sudoku.storage.set("sudokuPuzzleHGrid", this.get());
             },
             find: function(c) {
-                if (false !== (c = Sudoku.cookie.get("sudokuPuzzleHGrid"))) {
+                if (false !== (c = Sudoku.storage.get("sudokuPuzzleHGrid"))) {
                     this.set(c);
                     return true;
                 } else {
@@ -181,10 +183,10 @@ var Sudoku = {
                 return Sudoku.grid.v;
             },
             save: function() {
-                Sudoku.cookie.set("sudokuPuzzleVGrid", this.get());
+                Sudoku.storage.set("sudokuPuzzleVGrid", this.get());
             },
             find: function(c) {
-                if (false !== (c = Sudoku.cookie.get("sudokuPuzzleVGrid"))) {
+                if (false !== (c = Sudoku.storage.get("sudokuPuzzleVGrid"))) {
                     this.set(c);
                     return true;
                 } else {
@@ -201,10 +203,10 @@ var Sudoku = {
                 return Sudoku.grid.a;
             },
             save: function() {
-                Sudoku.cookie.set("sudokuPuzzleAGrid", this.get());
+                Sudoku.storage.set("sudokuPuzzleAGrid", this.get());
             },
             find: function(c) {
-                if (false !== (c = Sudoku.cookie.get("sudokuPuzzleAGrid"))) {
+                if (false !== (c = Sudoku.storage.get("sudokuPuzzleAGrid"))) {
                     this.set(c);
                     return true;
                 } else {
@@ -221,10 +223,10 @@ var Sudoku = {
                 return Sudoku.grid.m;
             },
             save: function() {
-                Sudoku.cookie.set("sudokuPuzzleMGrid", this.get());
+                Sudoku.storage.set("sudokuPuzzleMGrid", this.get());
             },
             find: function(c) {
-                if (false !== (c = Sudoku.cookie.get("sudokuPuzzleMGrid"))) {
+                if (false !== (c = Sudoku.storage.get("sudokuPuzzleMGrid"))) {
                     this.set(c);
                     return true;
                 } else {
@@ -329,7 +331,7 @@ var Sudoku = {
     stats:{
         S:{
             save: function() {
-                Sudoku.cookie.set("sudokuPuzzleStats", {
+                Sudoku.storage.set("sudokuPuzzleStats", {
                     strike     : Sudoku.stats.strike.get(), 
                     multiplier : Sudoku.stats.multiplier.get(), 
                     score      : Sudoku.stats.score.get(), 
@@ -339,7 +341,7 @@ var Sudoku = {
                 return this;
             },
             find: function(c) {
-                if (false !== (c = Sudoku.cookie.get("sudokuPuzzleStats"))) {
+                if (false !== (c = Sudoku.storage.get("sudokuPuzzleStats"))) {
                     Sudoku.stats.strike.set(c.strike);
                     Sudoku.stats.multiplier.set(c.multiplier);
                     Sudoku.stats.score.set(c.score);
@@ -549,22 +551,21 @@ var Sudoku = {
             return this;
         }
     },
-    cookie: { 
+    storage: { 
         set: function(n,o) {
-            return $.cookie(n, (($.type(o)==='object') ? JSON.stringify(o):o), {path:'/'});
+			localStorage.setItem(n, JSON.stringify(o));
+            return this;
         },
         get: function(n) {
             var c;
-            if (null == (c = $.cookie(n))) {
+            if (null == (c = localStorage.getItem(n) )) {
                 return false;
             } else {
                 return JSON.parse(c);
             }
         },
-        args: function(a) {
-            for(i in a) {
-                this.set(a[i][0], a[i][1]);
-            }
+        clear: function(a) {
+			localStorage.clear();
             return this;
         }
     },
@@ -577,7 +578,7 @@ var Sudoku = {
         }
     },
     reset: function() {
-        Sudoku.cookie.args([["sudokuPuzzleHGrid", null], ["sudokuPuzzleVGrid", null], ["sudokuPuzzleMGrid", null], ["sudokuPuzzleAGrid", null], ["sudokuPuzzleStats", null]]);
+        Sudoku.storage.clear();
         $(Sudoku.temp.S.modal.m).remove();
         $(Sudoku.temp.S.tablecontainer).remove();
 
