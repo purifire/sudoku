@@ -22,12 +22,11 @@ var $S = {
             dparams    : $S.stats.difficulty.params.get()            
         };
         $S.temp.load.main($S.data,$S.attach.init).modal();
-
         $S.puzzle.fulfill();
     },
     temp:{
         T:{t:'sudoku',c:'cell',m:'modal'},
-        S:{container:'#sContainer',modal:{m:'#sMC',span:'#sMC > span'},table:{t:'#sTable',tr:'tbody > tr',td:'td'},item:'.item p',input:'.cell p',closed:'.closed p',target:'p.target',picker:'button.picker',reset:'button.reset',labels:'thead > tr > th > ul li'},
+        S:{container:'#sContainer',modal:{m:'#sMC',span:'#sMC > span'},tablecontainer:'#sTableContainer',table:{t:'#sTable',tr:'tbody > tr',td:'td'},item:'.item p',input:'.cell p',closed:'.closed p',target:'p.target',picker:'button.picker',reset:'button.reset',labels:'thead > tr > th > ul li'},
         load:{
             init:function(){
                 $.tmpload($S.temp.T.t, '/assets/templates/sudoku.tmpl');
@@ -117,7 +116,8 @@ var $S = {
             return this;
         },
         fulfill:function(){
-            /*    TODO 
+            /*    
+            	TODO 
                 check number of completed elements and disable pickers if fulfilled
              */
             //$S.temp.update.modal("hello");
@@ -129,7 +129,13 @@ var $S = {
         isAnswer:function(x,y){return (null!==$S.grid.a && $.type($S.grid.a[x])!=='undefined'&&$.type($S.grid.a[x][y])!=='undefined');},
         setAnswer:function(obj,x,y,a){if(null===$S.grid.a){$S.grid.A.set();}$S.grid.a[x]=(null==$S.grid.a[x])?{}:$S.grid.a[x];$S.grid.a[x][y]=a;$S.grid.A.save();$S.temp.update.cell(obj,a,function(o){$S.effects.rotate(o).blaze(o,true)});return this;},
         getAnswer:function(x,y){return $S.grid.h[x][y];},
-        setEdit:function(obj,b){$(obj).attr('contentEditable',(b||false));$($S.temp.S.input,$S.temp.S.table.t).removeClass('target');if(b){$(obj).addClass('target');}return this;}
+        setEdit:function(obj,b){
+        	$($S.temp.S.input,$S.temp.S.table.t).removeClass('target');
+        	if(b){
+        		$(obj).addClass('target');
+        	}
+        	return this;
+        }
     },
     stats:{
         S:{
@@ -182,7 +188,7 @@ var $S = {
         args:function(a){for(i in a){this.set(a[i][0],a[i][1]);}return this;}
     },
     recover:function(){if(!$S.grid.H.find()||!$S.grid.V.find()||!$S.grid.M.find()||!$S.stats.S.find()){return false;}else{$S.grid.A.find();return true;}},
-    reset:function(){$S.cookie.args([["sudokuPuzzleHGrid",null],["sudokuPuzzleVGrid",null],["sudokuPuzzleMGrid",null],["sudokuPuzzleAGrid",null],["sudokuPuzzleStats",null]]);$($S.temp.S.table.t).remove();return $S.init();},
+    reset:function(){$S.cookie.args([["sudokuPuzzleHGrid",null],["sudokuPuzzleVGrid",null],["sudokuPuzzleMGrid",null],["sudokuPuzzleAGrid",null],["sudokuPuzzleStats",null]]);$($S.temp.S.modal.m).remove();$($S.temp.S.tablecontainer).remove();return $S.init();},
     attach:{
         init:function(){
             $S.attach.reset();
@@ -225,9 +231,10 @@ var $S = {
             });
         },
         picker:function(){
-            $($S.temp.S.picker,$S.temp.S.table.t).each(function(){
+            $($S.temp.S.picker).each(function(){
                 $(this).bind({
                     click:function(e){
+
                         e.preventDefault();e.stopImmediatePropagation();
                         $S.puzzle.select($S.temp.S.target,$(this).data('value'));
                     }

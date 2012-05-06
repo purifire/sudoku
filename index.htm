@@ -7,15 +7,14 @@
 	<meta name="description" content="Sudoku : html5, css & javascript"/>
 	<meta name="author" content="d.prock creative"/>
 
-	<meta name="HandheldFriendly" content="True"/>
-	<meta name="MobileOptimized" content="320"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="handheldfriendly" content="true"/>
+	<meta name="mobileoptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 maximum-scale=1.0">
 
 	<!--link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
 	<link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
 	<link rel="shortcut icon" href="img/l/apple-touch-icon.png"-->
-
 
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
 	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
@@ -35,14 +34,20 @@
 		.script("/assets/js/jquery.easing.pack.js")
 		.script("/assets/js/jquery.sudoku.js").wait(function(){
 			Sudoku.init();
+		})
+		.script("/assets/js/jquery.popup.pack.js").wait(function(){
+			$('.popup').popups();
 		});
-		/*
-		<div id="test"></div><a href="javascript:void(0);" onclick="test('Back atcha');">test</a>
-		*/
 	</script>
 </head>
 <body>
-
-<div id="sContainer"></div>
+	<div id="sContainer"></div>
+	<footer>
+		<nav>
+			<ul>
+				<li><label class="popup" data-tip="I've got an idea. dprockcreative &copy;2012" data-href="http://www.dprockcreative.com">&nbsp;</label></li>
+			</ul>
+		</nav>
+	</footer>
 </body>
 </html>

@@ -1,0 +1,69 @@
+/* =================== *
+ *	Mode
+ * =================== */
+body.standalone {
+	margin-top: 20px;
+}
+
+footer {
+	background-color: rgba(0,0,0,0.9);
+}
+
+footer nav ul {
+	color: rgba(255,255,255,0.9);
+}
+
+footer nav ul li {
+}
+
+footer nav ul li label {
+	display: block;
+	width: 25px;
+	height: 25px;
+	font-size: 8pt;
+	line-height: 1.5em;
+	background: url("/assets/images/dpc_logo_teeny.png") no-repeat center center;
+	cursor: pointer;
+}
+
+#tt {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 50;
+
+	display: none;
+	min-width: 150px;
+	min-height: 25px;
+	margin: 5px;
+	padding: 0;
+
+	background-color: rgba(51,51,51,0.9);
+	border: 1px solid rgba(255,255,255,0.8);
+
+	box-shadow: 0 0 3px rgba(51,51,51,0.8), 0 0 7px rgba(255,255,255,0.5) inset;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#tt p {
+	font-size: 8pt;
+	color: rgba(255,255,255,0.9);
+	line-height: 1.5em;
+	margin: 5px 10px;
+}
+
+
+/* =================== *
+ *	Conditionals
+ * =================== */
+@media only screen and (min-width: 480px) {
+}
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 1024px) {
+}

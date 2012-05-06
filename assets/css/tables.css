@@ -1,0 +1,152 @@
+table#sTable tr,table#sTable td, table#sTable div, table#sTable p { margin: 0;padding: 0; }
+
+table#sTable {
+	position: relative;
+	z-index: 1;
+	display: table;
+	width: 300px;
+	height: 292px;
+	background-color: rgba(0,0,0,0.7);
+	border: 1px solid rgba(0,0,0,0.5);
+
+	box-shadow: 0 0 3px rgba(0,0,0,0.6);
+
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+}
+
+table#sTable tbody tr td {
+	padding: 1px;
+	background-color: rgba(255,255,255,0.99);
+	border: 1px solid rgba(0,0,0,0.2);
+	border-top: none;
+	border-left: none;
+}
+
+table#sTable tbody tr td div {
+	position: relative;
+	z-index: 10;
+
+	display: block;
+	width: 29px;
+	height: 29px;
+	margin: 0;
+}
+
+table#sTable tbody tr td div:hover {
+	z-index: 13;
+}
+
+table#sTable tbody tr td div p {
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+}
+
+table#sTable tbody tr td div:hover p {
+	z-index: 14;
+	border: 1px solid rgba(0,0,0,0.8);
+	box-shadow: 0 0 3px rgba(51,51,51,0.8), 0 0 7px rgba(0,0,0,0.2) inset;
+
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+
+	-webkit-transform: scale(1.4);
+	-moz-transform: scale(1.4);
+	-o-transform: scale(1.4);
+}
+
+table#sTable tbody tr td div p {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 12;
+
+	display: block;
+	width: 26px;
+	height: 26px;
+	margin: 1px 0 0 1px;
+	padding: 0;
+	font-size: 14pt;
+	line-height: 1.5em;
+	color: rgba(0,0,0,0.6);
+	text-align: center;
+	border: 1px solid transparent;
+
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+table#sTable tbody tr td div.closed,
+table#sTable tbody tr td div.closed p {
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+}
+
+table#sTable tbody tr td div.closed p {
+	font-size: 15pt;
+	font-weight: bold;
+	text-align: center;
+	color: rgba(0,0,0,0.9);
+	line-height: 1.4em;
+	background-color: rgba(255,255,255,0.3);
+
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+table#sTable tbody tr td div.cell p {
+	cursor: pointer;
+}
+
+table#sTable tbody tr.active td div,
+table#sTable tbody tr td.active div {
+	background-color: rgba(0,120,0,1);
+	box-shadow: 0 0 3px rgba(0,120,0,1);
+}
+
+table#sTable tbody tr.active td div p,
+table#sTable tbody tr td.active div p {
+	color: rgba(255,255,255,0.9);
+}
+
+table#sTable tbody tr td div.blaze p {opacity:0;border-color:rgba(0,0,0,0.5);background-color:rgba(255,255,255,0.7);}
+table#sTable tbody tr td div.unblaze p {
+    height: 25px;
+    width: 25px;
+	border-color:transparent;
+	background-color:rgba(255,255,255,0.3);
+}
+
+table#sTable tbody tr td div p.hilite {
+	height: 25px;
+	color: rgba(0,0,0,0.8);
+	background-color: rgba(0,120,0,0.3);	
+}
+
+table#sTable tbody tr td div.flame.cell p {
+	color: #fff;
+	background-color: rgba(204,0,0,0.9);
+	box-shadow: 0 0 3px rgba(0,0,0,0.9) inset;
+}
+
+td.selected { border-color: #000; }
+
+table#sTable tbody tr td.column-3,
+table#sTable tbody tr td.column-6 {
+	border-right: 2px solid rgba(0,0,0,0.7);
+}
+
+table#sTable tbody tr td.row-3,
+table#sTable tbody tr td.row-6 {
+	border-bottom: 2px solid rgba(0,0,0,0.8);
+}
+
+table#sTable tbody tr td.column-9 {
+	border-right: 1px solid rgba(0,0,0,0.8);
+}

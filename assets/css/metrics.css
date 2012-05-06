@@ -1,0 +1,62 @@
+#sMetrics {
+	position: relative;
+	display: block;
+	text-align: center;
+	background-color: rgba(0,0,0,0.2);
+	border-bottom: 1px solid rgba(0,0,0,0.8);
+
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+}
+
+#sMetrics ul {
+	list-style: none;
+	display: block;
+	width: auto;
+	margin: 0;
+	padding: 3px 0;
+	text-align: center;
+}
+
+#sMetrics ul li {
+	display: inline-block;
+	width: auto;
+	height: auto;
+	margin: 0 4px;
+	padding: 0;
+	font-size: 9pt;
+	font-weight: normal;
+	background-color: rgba(255,255,255,0.2);
+}
+
+#sMetrics ul li label {
+	display: inline-block;
+	margin: 0;
+	padding: 0 0 0 9px;
+	color: rgba(0,0,0,0.8);
+	line-height: 1.3em;
+	background-color: rgba(255,255,255,0.7);
+	border: 1px solid rgba(0,0,0,0.8);
+	cursor: default;
+
+	box-shadow: 0 0 3px #ccc, 0 0 1px #333 inset;
+
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+#sMetrics ul li label span {
+	display: inline-block;
+	font-weight: 600;
+	margin: 0 0 0 6px;
+	padding: 2px 8px 1px 7px;
+	color: rgba(255,255,255,0.9);
+	background-color: rgba(0,0,0,0.5);
+	border-left: 1px solid rgba(0,0,0,0.8);
+
+	-webkit-border-radius: 0 3px 3px 0;
+	-moz-border-radius: 0 3px 3px 0;
+	border-radius: 0 3px 3px 0;
+}
